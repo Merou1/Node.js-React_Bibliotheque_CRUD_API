@@ -2,10 +2,6 @@ const express = require('express');
 const router = express.Router();
 const livresRoutes = require('./livresRoutes');
 
-const prets = [
-    {idPret : 0, idLivre:0, durreEnJours:10},
-    {idPret : 1, idLivre:1, durreEnJours:20}
-]
 
 router.get("",(req,res) => {
     res.status(200).send(prets)

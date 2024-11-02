@@ -1,11 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-const livres = [ 
-    {id : 0, titre : "livre1", nbPage:10, auteur:"Jean paul"},
-    {id : 1, titre : "livre2", nbPage:40, auteur:"Mer1"}
-]
-
 router.get("",(req,res) => {
     res.status(200).send(livres)
 })
@@ -68,4 +63,4 @@ router.delete("/:id",(req,res) => {
 })
 
 
-module.exports = {router,livres};
+module.exports = {router};
