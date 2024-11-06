@@ -9,12 +9,12 @@ app.use(express.json());
 
 
 app.get("/", (req,res) => {
-    res.send("Welcome to CRUD Api")
+    res.send("Welcome to BIBLIOTHEQUE Api")
 })
 
 app.use("/abonnes",abonnes);
 app.use("/prets",prets);
-app.use("/livres",livres.router);
+app.use("/livres",livres);
 
 
 app.listen(port,() => {

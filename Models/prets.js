@@ -1,4 +1,4 @@
-import { pretsdb } from "../db/db";
+import { prets} from "../config/tables";
 
 class Prets {
     constructor(idPret,idLivre,durreEnJours) {
