@@ -47,4 +47,5 @@ const prets = sequelize.define('prets',{
     durreEnJours : Sequelize.INTEGER
 });
 
+
 module.exports  = {abonnes,prets,livres}

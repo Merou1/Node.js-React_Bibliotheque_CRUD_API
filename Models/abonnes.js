@@ -14,9 +14,9 @@ class Abonnes {
         .catch(err => {throw err})
     }
     static getOneAbonne(id) {   
-            return abonnes.findOne({where : {id : id}})
-            .then(result => result)
-            .catch(err => {throw err}) ; 
+        return abonnes.findOne({where : {id : id}})
+        .then(result => result)
+        .catch(err => {throw err}) ; 
     }
     addAbonne = () => { 
         console.log(this.typeAbonnement,this.dureeEnMois)

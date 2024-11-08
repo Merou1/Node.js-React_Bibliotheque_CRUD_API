@@ -7,10 +7,10 @@ router.get("",abonnesController.getAll);
 
 router.get("/:id",abonnesController.getOneAbonne);
 
-router.post("",abonnesController.addAbonne);
+router.post("/add",abonnesController.addAbonne);
 
-router.put("/:id",abonnesController.updateAbonne);
+router.put("/update/:id",abonnesController.updateAbonne);
 
-router.delete("/:id",abonnesController.deleteAbonne);
+router.delete("/delete/:id",abonnesController.deleteAbonne);
 
 module.exports = router;

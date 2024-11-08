@@ -1,4 +1,3 @@
-const { livres } = require('../config/tables');
 const Livres = require('../Models/livres')
 
 const getAll = async (req,res) => {
@@ -7,7 +6,7 @@ const getAll = async (req,res) => {
         res.status(200).send(result)
     }
     catch(err) {
-        res.status(500).json({err : err.message})
+        res.status(500).json({err : err})
     }
 }
 const getOne = async (req,res) => {

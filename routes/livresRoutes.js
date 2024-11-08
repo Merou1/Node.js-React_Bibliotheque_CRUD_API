@@ -7,10 +7,10 @@ router.get("",livresController.getAll)
 
 router.get("/:id",livresController.getOne)
 
-router.post("",livresController.addaddLivre)
+router.post("/add",livresController.addaddLivre)
 
-router.put("/:id",livresController.updateLivre)
+router.put("/update/:id",livresController.updateLivre)
 
-router.delete("/:id",livresController.deleteLivre)
+router.delete("/delete/:id",livresController.deleteLivre)
 
 module.exports = router;
