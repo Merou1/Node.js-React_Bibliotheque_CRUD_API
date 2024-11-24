@@ -1,20 +1,20 @@
 const Livres = require('../Models/livres')
 
-const getAll = async (req,res) => {
+const getAll = async (req, res) => {
     try {
         const result = await Livres.getAll();
-        res.status(200).send(result)
-    }
-    catch(err) {
-        res.status(500).json({err : err})
+        res.status(200).json(result);  
+    } catch (err) {
+        res.status(500).json({ err: err });  
     }
 }
+
 const getOne = async (req,res) => {
     try{
            const {id} = req.params;
            const result = await Livres.getOne(id);
            if(!result) throw {err : "Not found"} 
-           res.status(200).send(result)
+           res.status(200).json(result)
     }
     catch(err) {
         res.status(500).json({error : err})
@@ -24,16 +24,19 @@ const getOne = async (req,res) => {
 const addaddLivre = async (req,res) => {
     try{
         const {titre,nbPage,auteur} = req.body
+        console.log(typeof titre,typeof nbPage,typeof auteur)
         console.log(titre,nbPage,auteur)
         if(titre && nbPage && auteur) {
             const livre = new Livres(null,titre,nbPage,auteur)
             const result = await livre.addLivre();          
             res.status(201).json({id:result,message:"Added"})
         }
-        else throw {err : "Not found"}
+        else {
+            res.status(400).json({ err: "Invalid input" });
+        }
     }
     catch(err) {
-        res.status(500).json({error : err.message})
+        res.status(500).json({ err: "An error occurred" })
     }
 }
 const updateLivre = async (req,res) => {

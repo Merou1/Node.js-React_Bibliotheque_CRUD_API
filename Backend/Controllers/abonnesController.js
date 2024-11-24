@@ -5,7 +5,7 @@ const getAll = async (req,res) => {
     try{   
         const all = await Abonnes.getAll();
         console.log(all)
-        res.status(200).send(all)
+        res.status(200).json(all)
     }
     catch(err) {
         res.status(500).json({err:err.message})

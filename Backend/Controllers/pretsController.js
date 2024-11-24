@@ -6,7 +6,7 @@ const getAll = async (req,res) => {
     try{
     const result = await Prets.getAll()
     if(!result) throw {err : "Nothing found"}
-    res.status(200).send(result)
+    res.status(200).json(result)
     }
     catch(err) {
         res.status(500).send({err : err})
@@ -18,7 +18,7 @@ const getOne = async (req,res) => {
         console.log(id)
         const resultat =await Prets.getOne(id)
         if(!resultat) throw {err:"Not found"}
-        res.status(200).send(resultat)
+        res.status(200).json(resultat)
     }
     catch(err) {
         res.status(500).json({err : err.message})
@@ -33,7 +33,7 @@ const addPret = async (req,res) => {
             console.log("-----1-----")
             const resultat = await pret.addPret();
             console.log("-----2-----")
-            console.log("esultat "+resultat)
+            console.log("resultat "+resultat)
             if(!resultat) throw {err : "Internal error"}
             res.status(201).json({id : resultat, message : "Created"})
         }
