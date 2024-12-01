@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import '../../components/style.css'
+
 
 
 
@@ -20,14 +22,28 @@ const LivresList = () => {
         const x = confirm("Are you sure?")
         if(x)  {
             try{
+            const pretResp = await axios.get("http://localhost:4000/prets/");
+            const result = pretResp.data;
+
+            result.forEach(pret => {
+                if (pret.idLivre == id) {
+                    throw new Error("Livre est déjà en prêt.");
+                }
+            });
             const response = await axios.delete("http://localhost:4000/livres/delete/"+id);
             console.log("Livre with id : "+id+" Deleted");
             alert("Deleted Successfully")
             setLivresList(l => l.filter(livre => livre.id != id))
             }
             catch(err) {
-                console.error(err)
-                alert("Error while deleting Livre")
+                if(err.message == "Livre est déjà en prêt.") {
+                    alert("Livre est déjà en pret.");
+                    console.error(err.message)
+                }
+                else {
+                    console.error(err)
+                    alert("Error while deleting Livre")
+                }
             }
 
         }
@@ -37,9 +53,9 @@ const LivresList = () => {
     }
 
     return(
-        <div style={{display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
+        <div className="component">
             <div>
-            <Link to="/livres/add">Ajouter Livres</Link>
+            <Link to="/livres/add"><h3>Ajouter Livres</h3></Link>
             </div>
             <div>
             <h1>Liste des Livres</h1>
@@ -50,25 +66,26 @@ const LivresList = () => {
         <table style={{ border: "1px solid black", borderCollapse: "collapse", width: "100%" }}>
             <thead>
                 <tr>
-                    <th style={{ border: "1px solid black", padding: "8px" }}>Titre</th>
-                    <th style={{ border: "1px solid black", padding: "8px" }}>Nombre De Page</th>
-                    <th style={{ border: "1px solid black", padding: "8px" }}>Auteur</th>
+                    <th >Titre</th>
+                    <th >Nombre De Page</th>
+                    <th>Auteur</th>
                 </tr>
             </thead>
             <tbody>
             {LivresList.map((livre,index) => {
                 return(
                 <tr key={index}>
-                    <td style={{ border: "1px solid black", padding: "8px" }}>{livre.titre}</td>
-                    <td style={{ border: "1px solid black", padding: "8px" }}>{livre.nbPage}</td>
-                    <td style={{ border: "1px solid black", padding: "8px" }}>{livre.auteur}</td>
+                    <td >{livre.titre}</td>
+                    <td >{livre.nbPage}</td>
+                    <td >{livre.auteur}</td>
                     <td>
                         <Link to={`/edit-livre/${livre.id}`}>
-                        <button style={{ border: "1px solid black", padding: "8px" , marginRight:"5px"}}>Edit</button>
+                        <button 
+                        >Edit</button>
                         </Link>
                     </td>
                      <td>
-                        <button onClick={() => handleLivreDelete(livre.id)} style={{ border: "1px solid black", padding: "8px" }}>Supprimer</button>
+                        <button onClick={() => handleLivreDelete(livre.id)}>Supprimer</button>
                     </td>   
 
                 </tr>

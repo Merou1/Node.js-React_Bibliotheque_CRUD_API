@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import '../../components/style.css'
 
 
 const AbonnesList = () => {
@@ -34,37 +35,37 @@ const AbonnesList = () => {
 
     return(
         <>
-        <div style={{display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
+        <div className="component" >
 
         <div>
-            <Link to="/abonnes/add">Ajouter abonne</Link>
+            <Link to="/abonnes/add"><h3>Ajouter abonne</h3></Link>
         </div>
         <div>
         <h1>Liste des Abonnés</h1>
         {
         abonnes.length ==0
         ? (<p>Loading...</p> )
-        :(<table style={{ border: "1px solid black", borderCollapse: "collapse", width: "100%" }}>
+        :(<table >
             <thead>
                 <tr>
-                    <th style={{ border: "1px solid black", padding: "8px" }}>Type d'Abonnement</th>
-                    <th style={{ border: "1px solid black", padding: "8px" }}>Durrée en Mois</th>
+                    <th >Type d'Abonnement</th>
+                    <th >Durrée en Mois</th>
                 </tr>
             </thead>
             <tbody>
                 {abonnes.map((abonne,index) => {
                     return(
                     <tr key={index}>
-                        <td style={{ border: "1px solid black", padding: "8px" }}>{abonne.typeAbonnement}</td>
-                        <td style={{ border: "1px solid black", padding: "8px" }}>{abonne.dureeEnMois}</td>
+                        <td >{abonne.typeAbonnement}</td>
+                        <td >{abonne.dureeEnMois}</td>
                         <td>
                             <Link to={`/edit-abonne/${abonne.id}`}>
-                            <button style={{ border: "1px solid black", padding: "8px" , marginRight:"5px"}}>Edit</button>
+                            <button >Edit</button>
                             </Link>
                         </td>
 
                         <td>
-                            <button onClick={() => handleDeleteAbonne(abonne.id)} style={{ border: "1px solid black", padding: "8px" }}>Supprimer</button>
+                            <button onClick={() => handleDeleteAbonne(abonne.id)}>Supprimer</button>
                         </td>
                     </tr>
                     )

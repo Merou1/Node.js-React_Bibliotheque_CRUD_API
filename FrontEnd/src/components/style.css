@@ -1,0 +1,52 @@
+body {
+    margin: 0;
+    background-color: #f1d5b9;
+}
+h1 {
+    color:black 
+}
+button {
+    border: 1px solid wheat;
+    padding: 8px;
+    margin-right:5px;
+    background-color: black;
+    color: wheat;
+    transition: color 0.3s ease, text-decoration-color 0.3s ease; 
+}
+button:hover {
+    background-color: wheat;
+    color: black;
+    border-color: black;
+}
+td,th,tr {
+    border: 2px solid wheat;
+    padding: 8px;
+}
+table {
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 100% ;
+    border-radius: 10px;
+}
+h3 {
+    color: rgb(234, 202, 143);
+    transition: color 0.3s ease, text-decoration-color 0.3s ease; 
+    text-decoration: underline;
+}
+h3:hover {
+    color: black;
+    text-decoration: none;
+}
+.component {
+    background-color: #caa792;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    box-shadow: 0px 5px 10px 5px #debba5; 
+    padding: 20px;
+    width: 100%;
+    border: 2px solid black;
+    border-radius: 7px;
+}
+

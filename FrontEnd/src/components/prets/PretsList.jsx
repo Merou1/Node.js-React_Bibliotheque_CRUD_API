@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import '../../components/style.css'
+
 const PretsList = () => {
 
     const [prets,setPrets] = useState([]);
@@ -27,33 +29,33 @@ const PretsList = () => {
     }
 
     return(
-        <>
-    <Link to="/prets/add">Ajouter Pret</Link>        
+        <div className="component">
+    <Link to="/prets/add"><h3>Ajouter Pret</h3></Link>        
     <h1>Liste des Prets</h1>
         {
         prets.length === 0 
         ? <p>Loading...</p>
         :(
-        <table style={{ border: "1px solid black", borderCollapse: "collapse", width: "100%" }}>
+        <table >
             <thead>
                 <tr>
-                    <th style={{ border: "1px solid black", padding: "8px" }}>Id Livre</th>
-                    <th style={{ border: "1px solid black", padding: "8px" }}>Durrée En Jours</th>
+                    <th >Id Livre</th>
+                    <th >Durrée En Jours</th>
                 </tr>
             </thead>
             <tbody>
             {prets.map((pret,index) => {
                 return(
                 <tr key={index}>
-                    <td style={{ border: "1px solid black", padding: "8px", }}>{pret.idLivre}</td>
-                    <td style={{ border: "1px solid black", padding: "8px" }}>{pret.durreEnJours}</td>
+                    <td>{pret.idLivre}</td>
+                    <td>{pret.durreEnJours}</td>
                     <td>
                         <Link to={`/edit-pret/${pret.idPret}`}>
-                            <button style={{ border: "1px solid black", padding: "8px" , marginRight:"5px"}}>Edit</button>
+                            <button >Edit</button>
                         </Link>
                     </td>
                     <td>
-                        <button onClick={() => handleDeletePret(pret.idPret)} style={{ border: "1px solid black", padding: "8px" }}>Supprimer</button>
+                        <button onClick={() => handleDeletePret(pret.idPret)} >Supprimer</button>
                     </td>
                 </tr>
                 )
@@ -62,7 +64,7 @@ const PretsList = () => {
             </tbody>
         </table>)
 }
-        </>
+        </div>
     )
    
 }
