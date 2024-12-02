@@ -8,6 +8,7 @@ import '../../components/style.css'
 
 const LivresList = () => {
     const [LivresList,setLivresList] = useState([{}]);
+    const [search,setSearch] = useState("");
     useEffect(() => {
         fetch("/livres")
         .then(result => result.json())
@@ -18,6 +19,25 @@ const LivresList = () => {
             console.error("Error fetching data:", error); 
         });
     },[])
+    const handleSearch = (e) => {
+        e.preventDefault();
+        setSearch(e.target.value)
+    }
+    const handleFilter = async() => {
+        try {
+            console.log("search from frontend : "+search)
+            const result =await axios.post("http://localhost:4000/livres/filter",{search});
+            console.log(result)
+            const data = result.data;
+            console.log(data)
+            if(data.length == 0) alert("No matching data...")
+            else setLivresList(data)
+        }   
+        catch(err) {
+            console.error(err)
+            alert("Error While Filtering")
+        }
+    }
     const handleLivreDelete =async (id) => {
         const x = confirm("Are you sure?")
         if(x)  {
@@ -57,13 +77,17 @@ const LivresList = () => {
             <div>
             <Link to="/livres/add"><h3>Ajouter Livres</h3></Link>
             </div>
+            <div className="filter">
+                <input onChange={handleSearch} type="text" name="" id="" placeholder="Chercher un livre"/>
+                <button onClick={handleFilter}>Chercher</button>
+            </div>
             <div>
             <h1>Liste des Livres</h1>
         {
         LivresList.length === 0 
         ? <p>Loading...</p>
         :(
-        <table style={{ border: "1px solid black", borderCollapse: "collapse", width: "100%" }}>
+        <table >
             <thead>
                 <tr>
                     <th >Titre</th>

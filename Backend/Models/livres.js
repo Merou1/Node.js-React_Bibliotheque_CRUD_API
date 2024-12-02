@@ -1,3 +1,4 @@
+const { where,Op } = require('sequelize');
 const {livres} = require('../config/tables')
 
 class Livres {
@@ -22,6 +23,13 @@ class Livres {
         console.log("this.auteur in model: "+this.auteur)
         return livres.create({titre:this.titre,nbPage:this.nbPage,auteur:this.auteur})
         .then(result => result.id)
+        .catch(err => {throw err})
+    }
+    static filterLivres = (search) => {
+        return livres.findAll({where: {titre: {
+            [Op.like]: `%${search}%`
+        }}})
+        .then(result => result)
         .catch(err => {throw err})
     }
     updateLivre = () => {

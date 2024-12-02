@@ -3,9 +3,13 @@ import { Link } from "react-router-dom";
 import loan from "../assets/book.png";
 import book from "../assets/open-book.png"; 
 import sub from "../assets/add-friend.png"; 
+import './style.css'
+
+
 
 
 const Welcome = () => {
+  
   return (
     <>
       <div className="background"></div>

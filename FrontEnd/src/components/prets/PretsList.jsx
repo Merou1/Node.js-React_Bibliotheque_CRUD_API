@@ -29,9 +29,9 @@ const PretsList = () => {
     }
 
     return(
-        <div className="component">
-    <Link to="/prets/add"><h3>Ajouter Pret</h3></Link>        
-    <h1>Liste des Prets</h1>
+     <div className="component">
+        <Link to="/prets/add"><h3>Ajouter Pret</h3></Link>        
+        <h1>Liste des Prets</h1>
         {
         prets.length === 0 
         ? <p>Loading...</p>
@@ -44,27 +44,26 @@ const PretsList = () => {
                 </tr>
             </thead>
             <tbody>
-            {prets.map((pret,index) => {
-                return(
-                <tr key={index}>
-                    <td>{pret.idLivre}</td>
-                    <td>{pret.durreEnJours}</td>
-                    <td>
-                        <Link to={`/edit-pret/${pret.idPret}`}>
-                            <button >Edit</button>
-                        </Link>
-                    </td>
-                    <td>
-                        <button onClick={() => handleDeletePret(pret.idPret)} >Supprimer</button>
-                    </td>
-                </tr>
-                )
-            })}
-                
+                {prets.map((pret,index) => {
+                    return(
+                    <tr key={index}>
+                        <td>{pret.idLivre}</td>
+                        <td>{pret.durreEnJours}</td>
+                        <td>
+                            <Link to={`/edit-pret/${pret.idPret}`}>
+                                <button >Edit</button>
+                            </Link>
+                        </td>
+                        <td>
+                            <button onClick={() => handleDeletePret(pret.idPret)} >Supprimer</button>
+                        </td>
+                    </tr>
+                    )
+                })}
             </tbody>
         </table>)
 }
-        </div>
+    </div>
     )
    
 }

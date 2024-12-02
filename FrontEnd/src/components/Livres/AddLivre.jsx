@@ -43,14 +43,14 @@ const AddLivre = () => {
     }
     
     return(
-        <>
-        <form onSubmit={handleSubmit}>
-            <input onChange={handleSetTitre} value={titre} type="text" placeholder="Entrer titre" />
-            <input onChange={handleSetNbPage} value={nbPage} type="text" placeholder="Entrer Nombre de page"/>
-            <input onChange={handleSetAuteur} value={auteur} type="text" placeholder="Entrer Auteur"/>
-            <button type="submit">Ajouter</button>
-        </form>
-        </>
+        <div >
+            <form onSubmit={handleSubmit}>
+                <input onChange={handleSetTitre} value={titre} type="text" placeholder="Entrer titre" />
+                <input onChange={handleSetNbPage} value={nbPage} type="text" placeholder="Entrer Nombre de page"/>
+                <input onChange={handleSetAuteur} value={auteur} type="text" placeholder="Entrer Auteur"/>
+                <button type="submit">Ajouter</button>
+            </form>
+        </div>
     )
 }
 export default AddLivre;

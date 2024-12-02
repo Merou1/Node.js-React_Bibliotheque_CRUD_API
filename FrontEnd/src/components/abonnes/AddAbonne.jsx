@@ -35,13 +35,13 @@ const AddAbonne = () => {
     }
 
     return(
-        <>
-        <form onSubmit={handleSubmit}>
-            <input onChange={handleSetTypeAbo} type="text" placeholder="Entrer Type D'Abonnement"/>
-            <input onChange={handleSetDuree} type="text" placeholder="Entrer La Durée En Mois"/>   
-            <button type="submit">Ajouter</button>     
-        </form>
-        </>
+        <div>
+            <form onSubmit={handleSubmit}>
+                <input onChange={handleSetTypeAbo} type="text" placeholder="Entrer Type D'Abonnement"/>
+                <input onChange={handleSetDuree} type="text" placeholder="Entrer La Durée En Mois"/>   
+                <button type="submit">Ajouter</button>     
+            </form>
+        </div>
     )
 }
 export default AddAbonne

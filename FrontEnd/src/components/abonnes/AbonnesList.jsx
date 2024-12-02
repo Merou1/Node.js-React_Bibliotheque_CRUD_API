@@ -7,6 +7,7 @@ import '../../components/style.css'
 const AbonnesList = () => {
 
     const [abonnes,setAbonnes] = useState([{}])
+
     useEffect(() => {
         fetch("/abonnes")
         .then(result => result.json())

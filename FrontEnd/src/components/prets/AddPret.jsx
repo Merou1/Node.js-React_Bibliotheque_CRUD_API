@@ -47,7 +47,7 @@ const AddPret = () => {
 
 
     return(
-        <>
+        <div>
             <form onSubmit={handleSubmit}>
                 <select onChange={handSelectleChange} value={idLivre} name="" id="">
                 <option value="" disabled>
@@ -60,7 +60,7 @@ const AddPret = () => {
                 <input onChange={handledDurreeChange} type="text" name="" id="" placeholder="Durre en Jours du Pret"/>
                 <button type="submit">Ajouter</button>
             </form>
-        </>
+        </div>
     )
 
 }

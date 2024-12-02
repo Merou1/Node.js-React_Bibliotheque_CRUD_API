@@ -39,6 +39,23 @@ const addaddLivre = async (req,res) => {
         res.status(500).json({ err: "An error occurred" })
     }
 }
+const filterLivres = async (req,res) => {
+    const {search} = req.body;
+    console.log("search from backend : "+search)
+    if(!search) {
+        res.status(400).json({ error: "Search term is required" });
+        return;    }
+    try{
+    const result =await Livres.filterLivres(search);
+    console.log(result)
+    res.status(201).json(result)
+    }
+    catch(err) {
+        console.error(err)
+        res.status(500).json({error : err})
+    }
+
+}
 const updateLivre = async (req,res) => {
     try{
         const {id} = req.params;
@@ -65,4 +82,4 @@ const deleteLivre = (req,res) => {
     }
 
 }
-module.exports = {getAll,getOne,addaddLivre,updateLivre,deleteLivre};
+module.exports = {getAll,getOne,addaddLivre,updateLivre,deleteLivre,filterLivres};

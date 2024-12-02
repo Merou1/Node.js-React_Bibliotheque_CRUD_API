@@ -9,6 +9,8 @@ router.get("/:id",livresController.getOne)
 
 router.post("/add",livresController.addaddLivre)
 
+router.post("/filter",livresController.filterLivres);
+
 router.put("/update/:id",livresController.updateLivre)
 
 router.delete("/delete/:id",livresController.deleteLivre)
